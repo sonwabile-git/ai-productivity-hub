@@ -70,8 +70,7 @@ function Page() {
   const [input, setInput] = useState("");
   const isLoading = status === "submitted" || status === "streaming";
 
-  const submit = (e?: React.FormEvent) => {
-    e?.preventDefault();
+  const submit = () => {
     const text = input.trim();
     if (!text || isLoading) return;
     setInput("");
@@ -160,7 +159,7 @@ function Page() {
         </Conversation>
 
         <div className="border-t border-border/60 bg-background/60 p-3 backdrop-blur md:p-4">
-          <PromptInput onSubmit={submit}>
+          <PromptInput onSubmit={() => submit()}>
             <PromptInputTextarea
               value={input}
               onChange={(e) => setInput(e.target.value)}
